@@ -31,10 +31,10 @@ def showMenu():
 	userInput = input('Enter your choice: ')
 	print(userInput)
 	if userInput == '1':
-		startPage = input('Please Enter Start Page')
-		endPage = input('Please Enter End Page')
-		sort = 'name'
-		downloadAndSave(QUESTIONS_URL, startPage, endPage, sort)
+		pg1 = input('Please Enter Start Page: ')
+		pg2 = input('Please Enter End Page: ')
+		sort = 'creation'
+		downloadAndSave(QUESTIONS_URL, int(pg1), int(pg2), sort)
 		showMenu()
 	elif userInput == '2':
 		download_userProfiles()
@@ -46,10 +46,10 @@ def showMenu():
 		download_userTags()
 		showMenu()
 	elif userInput == '5':
-		startPage = input('Please Enter Start Page')
-		endPage = input('Please Enter End Page')
+		pg1 = input('Please Enter Start Page: ')
+		pg2 = input('Please Enter End Page: ')
 		sort = 'name'
-		downloadAndSave(TAGS_URL, startPage, endPage, sort)
+		downloadAndSave(TAGS_URL, int(pg1), int(pg2), sort)
 		showMenu()
 	elif userInput == '6':
 		downloadTagSynonyms()
@@ -86,6 +86,7 @@ def downloadAndSave(type, startPage, endPage, sort):
 				break
 			startPage = startPage+1
 	except:
+		print("Error Downloading Data:", sys.exc_info()[0])
 		print('Error Downloading Data')
 			
 #downloadAndSave(BADGES_URL,1,1000,'name')
@@ -173,7 +174,7 @@ def download_userBadges():
 		return
 	
 	usersListWithBadgesFolderExists = os.path.exists('usersListWithBadges')
-	if not usersProfilesFolderExists:
+	if not usersListWithBadgesFolderExists:
 		os.mkdir('usersListWithBadges', mode=0o777 )
 		
 	count = 0
@@ -192,7 +193,6 @@ def download_userBadges():
 			url = users_url+ids+'/'+BADGES_URL
 			try:
 				r = requests.get(url, params=payload)
-				print(r.status_code)
 				if r.status_code == 200:
 					with open('usersListWithBadges/usersbadges'+str(count)+'.json', 'w') as outfile:
 						json.dump(r.json(), outfile)
@@ -272,3 +272,5 @@ def downloadTagSynonyms():
 		else:
 			hasMore = 'false'
 	print('All Tags Synonyms Saved')
+	
+showMenu()
