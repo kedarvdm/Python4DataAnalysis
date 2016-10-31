@@ -1,0 +1,14 @@
+question_id,link,user_id,weightage
+39875116,http://stackoverflow.com/questions/39875116/spring-data-jpa-slow-creating-beans-for-repositories ,534877,330
+39807240,http://stackoverflow.com/questions/39807240/my-rest-service-does-not-work ,2326666,85
+39889390,http://stackoverflow.com/questions/39889390/wildfly-war-deployment-get-path-to-resource-file ,653282,77
+39848759,http://stackoverflow.com/questions/39848759/wildfly-10-1-service-is-not-starting ,3704760,41
+39963326,http://stackoverflow.com/questions/39963326/how-can-i-autowire-jparepository-into-wildflys-custom-login-module ,4688308,32
+39868226,http://stackoverflow.com/questions/39868226/how-to-setup-mariadb-jndi-on-wildfly-10 ,1530836,24
+39853132,http://stackoverflow.com/questions/39853132/rmi-wildfly-10x-spring-noclassdeffounderror-org-omg-corba-comm-failure ,4920729,24
+39978270,http://stackoverflow.com/questions/39978270/jboss-deployment-error-failed-services ,5585661,24
+39997376,http://stackoverflow.com/questions/39997376/could-not-get-wsdl-contract-error-when-deploying-web-service-in-wildfly ,6707816,21
+39888990,http://stackoverflow.com/questions/39888990/wildfly-10-windows-authentication ,4998135,21
+39808660,http://stackoverflow.com/questions/39808660/jvisualvm-profiler-version-error ,5080884,9
+39987134,http://stackoverflow.com/questions/39987134/wildfly-allowing-cross-origin-requests ,5882529,6
+39874213,http://stackoverflow.com/questions/39874213/servletrequest-getservername-returns-internal-ip ,2447161,3
