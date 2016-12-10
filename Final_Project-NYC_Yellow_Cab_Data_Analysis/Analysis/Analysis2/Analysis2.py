@@ -108,11 +108,9 @@ def create_factor_plot(group_by_df, save_file_name):
 	#Create reports folder if not exists
 	if not os.path.exists(report_name):
 		os.makedirs(report_name)
+		
+	factor_plot.savefig(report_name+save_file_name+'.png')
 	
-	plt.savefig(report_name+save_file_name+'.png', dpi=200, facecolor='w', edgecolor='w',
-        orientation='portrait', papertype=None, format=None,
-        transparent=False, bbox_inches=None, pad_inches=0.0,
-        frameon=None)
 	print('Graph output stored to: {0}'.format(report_name+save_file_name+'.png'))
 	
 main()

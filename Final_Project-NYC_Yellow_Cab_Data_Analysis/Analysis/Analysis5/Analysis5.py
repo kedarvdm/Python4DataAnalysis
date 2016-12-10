@@ -198,10 +198,8 @@ def create_grouped_bar_plot(joined_df, save_file_name):
 	if not os.path.exists(report_name):
 		os.makedirs(report_name)
 	
-	plt.savefig(report_name+save_file_name+'_bar_plot.png', dpi=200, facecolor='w', edgecolor='w',
-        orientation='portrait', papertype=None, format=None,
-        transparent=False, bbox_inches=None, pad_inches=1.0,
-        frameon=None)
+	factor_plot.savefig(report_name+save_file_name+'_bar_plot.png')
+	
 	print('Grouped Graph output stored to: {0}'.format(report_name+save_file_name+'_bar_plot.png'))
 	
 main()

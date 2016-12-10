@@ -108,6 +108,7 @@ def create_violin_plot(df, save_file_name):
 	if not os.path.exists(report_name):
 		os.makedirs(report_name)
 	
+	plt.gcf().subplots_adjust(bottom=0.25)
 	plt.savefig(report_name+save_file_name+'.png', dpi=200, facecolor='w', edgecolor='w',
         orientation='portrait', papertype=None, format=None,
         transparent=False, bbox_inches=None, pad_inches=1.0,
