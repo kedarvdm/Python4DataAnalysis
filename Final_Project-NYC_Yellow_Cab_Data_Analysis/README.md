@@ -21,8 +21,20 @@ You can easily install them if you have Anaconda installed. Please make sure you
   Please download Trip Sheet Data in CSV Format from following website and place in the "Taxi" folder in this project.
 http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml
 
+Few important points about dataset.
+
+* There are few records without location info.
+* In some cases, the tip amount is way to higher than usual scenario (e.g fare amount $9.5, tip amount $998.0)
+I have ignored such cases.
+
 ### Pre-Processing
 The aim is to process the downloaded data in Taxi folder and getting it ready for analysis.
+Steps:
+  1. Data extraction from Taxi folder and adding Travel date parameter in the file.
+  2. Creating chunks of the extracted data in order to deal with small csv rather than a big one.
+  3. Read the GeoJSON and updating the Pick Up and Dropoff areas
+  4. Request and store Lyft ride estimates using requests library.
+
 Please run the DataCollection.py file.
   Optional Arguments: 
   1. \-\-venderid (1= Creative Mobile Technologies, LLC; 2= VeriFone Inc.)
@@ -31,6 +43,20 @@ Please run the DataCollection.py file.
     python DataCollection.py --venderid=1 --month=2016-01
 ```
 This file will perform certain steps on data and will get it ready for analysis.
+
+## General Statistics
+
+**index**|**passenger\_count**|**trip\_distance**|**fare\_amount**|**extra**|**mta\_tax**|**tip\_amount**|**tolls\_amount**|**improvement\_surcharge**|**total\_amount**
+:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
+count|150774.0|150774.0|150774.0|150774.0|150774.0|150774.0|150774.0|150774.0|150774.0
+mean|1.48|3.22|12.78|0.3|0.5|1.45|0.26|0.3|15.58
+std|0.82|3.73|11.77|0.28|0.04|4.1|1.4|0.0|14.04
+min|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0
+25%|1.0|1.1|6.5|0.0|0.5|0.0|0.0|0.3|8.15
+50%|1.0|1.9|9.0|0.5|0.5|0.98|0.0|0.3|11.3
+75%|2.0|3.8|15.0|0.5|0.5|2.0|0.0|0.3|17.75
+max|6.0|175.2|998.0|2.0|0.5|998.14|95.54|0.3|1004.94
+Sum|222411.0|485329.9|1926663.28|44596.02|74851.0|218746.62|38877.73|45227.4|2348962.05
 
 ## Analysis
 The py files for performing analysis are located in Analysis folder and its subfolders.
@@ -43,6 +69,7 @@ Every analysis file has same optional arguments.
 
 ### Analysis 1- Borough to Borough Revenue Distribution
 * The analysis displays the revenue matrix between all the boroughs in New York.
+* Group the data by pick up and dropoff area and sum up the total amount.
 
 **Pick-Up**|**Bronx**|**Brooklyn**|**Manhattan**|**Queens**|**Staten Island**
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:
@@ -58,6 +85,8 @@ The Cost Heatmap is as below:
 
 ### Analysis 2- Average Credit Vs. Cash Payments Per Borough.
 * The analysis displays average Credit Vs. Cash payments Per borough where the trip ended and payment was made.
+* Filter the dataframe for cash and credit card payments.
+* Group the data by Pickup area and Payment type and calculate the mean.
 
 **Pick-Up Area**|**Payment Type**|**Average**
 :-----:|:-----:|:-----:
@@ -78,6 +107,8 @@ The Grouped bar chart is as below:
 
 ### Analysis 3- Avarage Tip Percentage
 * This analysis tells us the avarage tip percentage per borough and also displays min and max payment.
+* Calculate the tip percentage by using total_amount and tip_amount.
+* Group the data by Dropoff area and calculate average tip amount.
 
 **Dropoff Area**|**Average Tip**|**Max Tip**|**Min Tip**
 :-----:|:-----:|:-----:|:-----:
@@ -92,6 +123,8 @@ The Bar plot is as below:
 
 ### Analysis 4- Cash Vs. Credit Payment Distribution For Trips Under $150
 * The analysis displays Cash Vs Credit Payment distribution per borough in violin chart. Only trips under $150 are considered for this analysis.
+* Filter the dataframe for cash and credit payments.
+* Group the data by Dropoff area and Payment Type and calculate average trip amount.
 
 **Dropoff Area**|**Payment Type**|**Amount**
 :-----:|:-----:|:-----:
