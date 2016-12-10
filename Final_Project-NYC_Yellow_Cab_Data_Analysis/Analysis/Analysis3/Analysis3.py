@@ -35,6 +35,9 @@ def main():
 		list_.append(short_df)
 	df = pd.concat(list_)
 	
+	df = df[df['pickup_area'] != 'Not Specified']
+	df = df[df['dropoff_area'] != 'Not Specified']
+	
 	print('Filtering Payments by Credit Card')
 	df = df[df['payment_type'] == 1]
 	print('Unsual scenario where tip amount is greater than actual fare.')

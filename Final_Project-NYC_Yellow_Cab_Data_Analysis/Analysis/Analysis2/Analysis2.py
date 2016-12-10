@@ -28,6 +28,9 @@ def main():
 		list_.append(short_df)
 	df = pd.concat(list_)
 	
+	df = df[df['pickup_area'] != 'Not Specified']
+	df = df[df['dropoff_area'] != 'Not Specified']
+	
 	group_by_series = df['total_amount'].groupby([df['pickup_area'], df['payment_type']]).mean()
 	group_by_df = group_by_series.to_frame()
 	group_by_df = group_by_df.reset_index()

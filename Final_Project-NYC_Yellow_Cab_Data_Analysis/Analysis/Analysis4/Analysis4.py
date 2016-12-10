@@ -27,6 +27,9 @@ def main():
 		list_.append(short_df)
 	df = pd.concat(list_)
 	
+	df = df[df['pickup_area'] != 'Not Specified']
+	df = df[df['dropoff_area'] != 'Not Specified']
+	
 	print('Filtering Cash and Credit Card Payments')
 	df = df[df['payment_type'].isin([1,2])]
 	

@@ -27,6 +27,10 @@ def main():
 		short_df = pd.read_csv(fileName)
 		list_.append(short_df)
 	df = pd.concat(list_)
+	
+	df = df[df['pickup_area'] != 'Not Specified']
+	df = df[df['dropoff_area'] != 'Not Specified']
+	
 	df = df.rename(columns = {'pickup_area':'Pick-Up', 'dropoff_area':'Dropoff'})
 	
 	group_by_series = df['total_amount'].groupby([df['Pick-Up'], df['Dropoff']]).sum()

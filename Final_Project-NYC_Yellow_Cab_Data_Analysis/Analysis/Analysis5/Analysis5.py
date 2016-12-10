@@ -44,6 +44,9 @@ def main():
 		list_.append(short_df)
 	df = pd.concat(list_)
 	
+	df = df[df['pickup_area'] != 'Not Specified']
+	df = df[df['dropoff_area'] != 'Not Specified']
+
 	print('Unsual scenario where tip amount is greater than actual fare.')
 	print('Filtering these records')
 	df = df[df['tip_amount']<df['fare_amount']]
