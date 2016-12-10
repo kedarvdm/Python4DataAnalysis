@@ -42,22 +42,22 @@ Every analysis file has same optional arguments.
 1) Analysis 1- Borough to Borough Revenue Distribution
     The analysis displays the revenue matrix between all the boroughs in New York.
     
-    ![alt text]("Analysis/Analysis1/reports/png/1_2016-01_2016_12_10_01_29_41.png")
+    ![alt text](Analysis/Analysis1/reports/png/1_2016-01_2016_12_10_01_29_41.png)
 
 2) Analysis 2- Average Credit Vs. Cash Payments Per Borough.
     The analysis displays average Credit Vs. Cash payments Per borough where the trip ended and payment was made.
     
-    ![alt text]("Analysis/Analysis2/reports/png/1_2016-01_2016_12_10_01_30_42.png")
+    ![alt text](Analysis/Analysis2/reports/png/1_2016-01_2016_12_10_01_30_42.png)
 
 3) Analysis 3- Avarage Tip Percentage
     This analysis tells us the avarage tip percentage per borough and also displays min and max payment.
     
-    ![alt text]("Analysis/Analysis3/reports/png/1_2016-01_2016_12_10_01_31_30.png")
+    ![alt text](Analysis/Analysis3/reports/png/1_2016-01_2016_12_10_01_31_30.png)
 
 4) Analysis 4- Cash Vs. Credit Payment Distribution For Trips Under $150
     The analysis displays Cash Vs Credit Payment distribution per borough in violin chart. Only trips under $150 are considered for this analysis.
     
-    ![alt text]("Analysis/Analysis4/reports/png/1_2016-01_2016_12_10_01_32_28.png)
+    ![alt text](Analysis/Analysis4/reports/png/1_2016-01_2016_12_10_01_32_28.png)
     
 5) Analysis 5- Comparison of Lyft Vs Yellow Cab Ride Costs based on Passenger count
     This analysis compares the NYC Yellow cab with Lyft ride estimated costs. The lyft data is collected through Lyft REST API.
@@ -67,9 +67,9 @@ Every analysis file has same optional arguments.
         2) 2 to 4 passenger compared with regular Lyft estimated cost.
         3) 5 and above compared with Lyft Plus estimated cost.
         
-    ![alt text]("Analysis/Analysis5/reports/png/1_2016-01_2016_12_10_01_34_55_bidirectional.png")
+    ![alt text](Analysis/Analysis5/reports/png/1_2016-01_2016_12_10_01_34_55_bidirectional.png)
     
-    ![alt text]("Analysis/Analysis5/reports/png/1_2016-01_2016_12_10_01_34_55_bar_plot.png")
+    ![alt text](Analysis/Analysis5/reports/png/1_2016-01_2016_12_10_01_34_55_bar_plot.png)
 
 Each analysis subfolder has reports folder. The CSV out put and PNG output of the graphs is being stored there.
    
