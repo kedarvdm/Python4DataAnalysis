@@ -94,35 +94,51 @@ def create_bar_plot(grouped_df, save_file_name):
 	max_lim = grouped_df['Max Tip'].max()
 	
 	plt.subplots(figsize=(20,10))
-
+	sns.set(style='whitegrid')
 	max_plot = sns.barplot(x="Dropoff Area", y="Max Tip", data=grouped_df,
-				label="Total", color="#DDA0DD")
+				label="Total", color="#DECF3F")
 
 	avg_plot = sns.barplot(x="Dropoff Area", y="Average Tip", data=grouped_df,
-				label="Total", color="#DB7093")
+				label="Total", color="#FF8C00")
 
 	min_plot = sns.barplot(x="Dropoff Area", y="Min Tip", data=grouped_df,
-				label="Total", color="#663399")
+				label="Total", color="#DECF3F")
 
-	avg_plot.set_title('Avarage Tip Percentage')
-	avg_plot.yaxis.set_label('Tip Percentage')
-	avg_plot.xaxis.get_label().set_fontsize(24)
-	avg_plot.yaxis.get_label().set_fontsize(24)
-	avg_plot.xaxis.get_label().set_color('#DC143C')
-	avg_plot.yaxis.get_label().set_color('#DC143C')
+	#Legend
+	maxbar = plt.Rectangle((1,1),2,2,fc="#DECF3F", edgecolor = 'none')
+	avgbar = plt.Rectangle((1,1),2,2,fc='#9400D3',  edgecolor = 'none')
+	minbar = plt.Rectangle((1,1),2,2,fc='#FF8C00',  edgecolor = 'none')
+	l = plt.legend([maxbar, avgbar, minbar], ['Min', 'Average', 'Max'], loc=2, ncol = 3, prop={'size':16 , 'weight':'bold'})
+	l.draw_frame(False)
+
+	#title
+	avg_plot.set_title('Average Tip Percentage')
 	avg_plot.title.set_fontsize(36)
-	avg_plot.title.set_color('#DC143C')
-	avg_plot.tick_params(axis='x', which='major',labelsize=18)
-	avg_plot.tick_params(axis='y', which='major',labelsize=18)
+	avg_plot.title.set_position([.5, 1.02])
+	avg_plot.title.set_fontweight(weight='bold')
+	avg_plot.title.set_color('#4D4D4D')
+
+	#XYAxis
+	avg_plot.xaxis.get_label().set_fontsize(30)
+	avg_plot.xaxis.get_label().set_fontweight(weight='bold')
+	avg_plot.xaxis.get_label().set_color('#4D4D4D')
+
+	avg_plot.yaxis.get_label().set_fontsize(30)
+	avg_plot.yaxis.get_label().set_fontweight(weight='bold')
+	avg_plot.yaxis.get_label().set_color('#4D4D4D')
+
+	#XyTicks
+	plt.setp(avg_plot.get_xticklabels(), rotation=45, fontsize=24, color='#B2912F', fontweight='bold')
+	plt.setp(avg_plot.get_yticklabels(), fontsize=24, color='#B2912F', fontweight='bold')
+
 	avg_plot.set(xlabel='Dropoff Area', ylabel='Tip Percentage')
 	avg_plot.set_ylim(0, 1.2*max_lim)
 
-	font ={'family': 'serif','color':  'darkred','weight': 'normal','size': 16}
+	font ={'family': 'serif','color':'#00008B','weight': 'bold','size': 20}
 
 	for p in avg_plot.patches:
 		percentage = p.get_height()
 		avg_plot.text(p.get_x(), percentage+ 2, '%1.2f'%(percentage), fontdict= font)
-		
 	#store the output in csv
 	report_name = 'reports\\png\\'
 	

@@ -68,24 +68,34 @@ def create_violin_plot(df, save_file_name):
 	plt.subplots(figsize=(20,10))
 	rc={'font.size': 24, 'axes.labelsize': 24, 'legend.fontsize': 24.0, 
 		'axes.titlesize': 32, 'xtick.labelsize': 18, 'ytick.labelsize': 18}
-	sns.set(rc=rc)
+	sns.set(rc=rc, style='whitegrid')
 	violin_plot = sns.violinplot(x="Dropoff Area", y="Amount", hue="Payment Type", data=df, split=True,
 								 inner="quart", palette={"Cash": "#DC143C", "Credit": "#FF8C00"})
-	violin_plot.set_ylim(-50, 175)
+	violin_plot.set_ylim(-25, 200)
 
+	#title
 	violin_plot.set_title('Cash Vs. Credit Distribution For Trips Under $150')
-	violin_plot.yaxis.set_label('Tip Percentage')
-	violin_plot.xaxis.get_label().set_fontsize(24)
-	violin_plot.yaxis.get_label().set_fontsize(24)
-	violin_plot.xaxis.get_label().set_color('#DC143C')
-	violin_plot.yaxis.get_label().set_color('#DC143C')
 	violin_plot.title.set_fontsize(36)
-	violin_plot.title.set_color('#DC143C')
-	violin_plot.tick_params(axis='x', which='major',labelsize=18)
-	violin_plot.tick_params(axis='y', which='major',labelsize=18)
+	violin_plot.title.set_position([.5, 1.02])
+	violin_plot.title.set_fontweight(weight='bold')
+	violin_plot.title.set_color('#4D4D4D')
+
+	#XyLabels
+	violin_plot.xaxis.get_label().set_fontsize(30)
+	violin_plot.xaxis.get_label().set_fontweight(weight='bold')
+	violin_plot.xaxis.get_label().set_color('#4D4D4D')
+
+	violin_plot.yaxis.get_label().set_fontsize(30)
+	violin_plot.yaxis.get_label().set_fontweight(weight='bold')
+	violin_plot.yaxis.get_label().set_color('#4D4D4D')
+
+	#Ticks
+	plt.setp(violin_plot.get_xticklabels(), rotation=45, fontsize=24, color='#B2912F', fontweight='bold')
+	plt.setp(violin_plot.get_yticklabels(), fontsize=24, color='#B2912F', fontweight='bold')
+
 	violin_plot.set(xlabel='Dropoff Area', ylabel='Trip Amount')
-	font ={'family': 'serif','color':  '#DC143C','weight': 'normal','size': 16}
-	violin_plot.set_xticklabels(labels=violin_plot.xaxis.get_ticklabels(),rotation=45, fontdict=font)
+
+	sns.despine(left=True)
 	sns.despine(left=True)
 	
 	#store the output in csv

@@ -99,6 +99,12 @@ def main():
 	print('End')
 	
 def create_bidirectional_bar_plot(grouped_df, save_file_name):
+	sns.set_style('whitegrid')
+	plt.rcParams['xtick.labelsize'] = 24 
+	plt.rcParams['ytick.labelsize'] = 24 
+	plt.rcParams['axes.labelsize'] = 30
+	plt.rcParams['axes.titlesize'] = 36
+
 	x1 = grouped_df['cost_without_tip']
 	x2 = grouped_df['estimated_lyft_cost']
 
@@ -108,23 +114,24 @@ def create_bidirectional_bar_plot(grouped_df, save_file_name):
 
 	y_pos = np.arange(len(x1))
 	y_pos = [x for x in y_pos]
-	plt.yticks(y_pos, bar_labels, fontsize=10)
+	plt.yticks(y_pos, bar_labels, fontsize=24, color='#4D4D4D')
 
-	plot1 = plt.barh(y_pos,x1,align='center',alpha=0.4,color='#FFD700')
+	plot1 = plt.barh(y_pos,x1,align='center',color='#FFD700')
 
-	plt.barh(y_pos,-x2,align='center',alpha=0.4,color='#FF1493')
+	plt.barh(y_pos,-x2,align='center',alpha=0.8,color='#FF1493')
 
 	# annotation and labels
 	t = plt.title('Comparison of Lyft Vs Yellow Cab Ride Costs')
-	plt.xlabel('Ride Cost')
-	plt.ylabel('Passenger Count')
-	plt.ylim([-1,len(x1)+0.1])
+	plt.xlabel('Ride Cost', color='#4D4D4D', weight='bold')
+	plt.ylabel('Passenger Count', color='#4D4D4D', weight='bold')
+	plt.ylim([-1,len(x1)+0.5])
 	plt.xlim([-max(x2)-5, max(x1)+5])
 
-	plt.rcParams['xtick.labelsize'] = 18 
-	plt.rcParams['ytick.labelsize'] = 18 
-	plt.rcParams['axes.labelsize'] = 24
-	plt.rcParams['axes.titlesize'] = 32
+	#Legend
+	maxbar = plt.Rectangle((1,1),2,2,fc="#FF1493", edgecolor = 'none')
+	minbar = plt.Rectangle((1,1),2,2,fc='#FFD700',  edgecolor = 'none')
+	l = plt.legend([maxbar, minbar], ['Lyft', 'Yellow Cab'], loc=2, ncol = 3, prop={'size':24 , 'weight':'bold'})
+	l.draw_frame(False)
 	
 	#store the output in csv
 	report_name = 'reports\\png\\'
@@ -143,29 +150,41 @@ def create_grouped_bar_plot(joined_df, save_file_name):
 	ymax = joined_df.cost.max().round()
 	
 	myColors = ["#FFD700","#FF1493"]
-	rc={'font.size': 24, 'axes.labelsize': 24, 'legend.fontsize': 24.0, 
-		'axes.titlesize': 36, 'xtick.labelsize': 18, 'ytick.labelsize': 18}
-	sns.set(rc=rc)
+	rc={'axes.labelsize': 24, 'legend.fontsize': 24.0}
+	sns.set(rc=rc, style='whitegrid')
 	factor_plot = sns.factorplot(x="passenger_count", y="cost", hue="Cab Type",
 								 data=joined_df, kind = 'bar' , size = 18, palette=myColors,
 								legend=True, legend_out=False)
 	plt.ylim(0, 18)
 	factor_plot.set()
 	factor_plot.despine(left=True)
-	factor_plot.set_xlabels('Passenger Count')
-	factor_plot.set_ylabels('Cost')
+
+	#title
 	figure_title = factor_plot.fig.suptitle('Yellow Cab Vs. Lyft Cost comparison')
-	figure_title.set_position([.5, 1.03])
+	figure_title.set_position([.5, 1.02])
+	figure_title.set_color(color='#4D4D4D')
+	figure_title.set_fontweight(weight='bold')
+	figure_title.set_fontsize(36)
 
-	factor_plot.ax.xaxis.label.set_color('#FF0000')
-	factor_plot.ax.yaxis.label.set_color('#FF0000')
+	#XYLabels
+	factor_plot.ax.xaxis.set_label_text('Passenger Count', weight='bold')
+	factor_plot.ax.xaxis.get_label().set_fontsize(30)
+	factor_plot.ax.xaxis.get_label().set_color('#4D4D4D')
 
-	font ={'family': 'serif','color':  'darkred','weight': 'normal','size': 16}
+	factor_plot.ax.yaxis.set_label_text('Cost', weight='bold')
+	factor_plot.ax.yaxis.get_label().set_fontsize(30)
+	factor_plot.ax.yaxis.get_label().set_color('#4D4D4D')
 
+	#XTick
+	factor_plot.set_xticklabels(fontsize=24, color='#B2912F',fontweight='bold')
+	factor_plot.set_yticklabels(fontsize=24, color='#B2912F',fontweight='bold')
+
+	#Annotations
+	font ={'family': 'serif','weight': 'bold','size': 20, 'color':'#5DA5DA'}
 	for p in factor_plot.ax.patches:
 		percentage = p.get_height()
 		factor_plot.ax.text(p.get_x(), percentage+0.1, '%1.2f'%(percentage), fontdict= font)
-	
+		
 	#store the output in csv
 	report_name = 'reports\\png\\'
 	

@@ -17,7 +17,7 @@ def parseInput():
 
 
 def main():
-	print('Average Credit Vs. Cash Per Borough')
+	print('Average Credit Vs. Cash Payments Per Borough')
 	#Read the VenderId and Month
 	venderid, month = parseInput()
 	extracted_files = glob.glob('..\\..\\Data\\{0}\\{1}\\processed\\*.csv'.format(venderid, month))
@@ -63,22 +63,36 @@ def main():
 	
 
 def create_factor_plot(group_by_df, save_file_name):
+	plt.subplots(figsize=(20,10))
 	myColors = ["#FF8C00","#DC143C"]
-	rc={'font.size': 24, 'axes.labelsize': 24, 'legend.fontsize': 24.0, 
-		'axes.titlesize': 32, 'xtick.labelsize': 18, 'ytick.labelsize': 18}
-	sns.set(rc=rc)
+	rc={'axes.labelsize': 24, 'legend.fontsize': 24.0}
+	sns.set(rc=rc, style='whitegrid')
 	factor_plot = sns.factorplot(x="Pick-Up Area", y="Average", hue="Payment Type",
 								 data=group_by_df, kind = 'bar' , size = 16, palette=myColors,
 								legend=True, legend_out=False)
-	factor_plot.despine(left=True)
-	factor_plot.set_xlabels('Borough')
-	factor_plot.set_ylabels('Total Amount')
-	factor_plot.set_xticklabels(rotation=45)
+
+	#Title
 	figure_title = factor_plot.fig.suptitle('Average Credit Vs. Cash Per Borough')
-	figure_title.set_position([.5, 1.00])
+	figure_title.set_position([.5, 1.02])
+	figure_title.set_color(color='#4D4D4D')
+	figure_title.set_fontweight(weight='bold')
+	figure_title.set_fontsize(36)
 
-	font ={'family': 'serif','color':  'darkred','weight': 'normal','size': 16}
+	#XYLabels
+	factor_plot.ax.xaxis.set_label_text('Borough', weight='bold')
+	factor_plot.ax.xaxis.get_label().set_fontsize(30)
+	factor_plot.ax.xaxis.get_label().set_color('#4D4D4D')
 
+	factor_plot.ax.yaxis.set_label_text('Total Amount', weight='bold')
+	factor_plot.ax.yaxis.get_label().set_fontsize(30)
+	factor_plot.ax.yaxis.get_label().set_color('#4D4D4D')
+
+	#XTick
+	factor_plot.set_xticklabels(rotation=45, fontsize=24, color='#B2912F',fontweight='bold')
+	factor_plot.set_yticklabels(fontsize=24, color='#B2912F',fontweight='bold')
+
+	#Annotations
+	font ={'family': 'serif','weight': 'bold','size': 20, 'color':'#5DA5DA'}
 	for p in factor_plot.ax.patches:
 		percentage = p.get_height()
 		factor_plot.ax.text(p.get_x(), percentage+0.5, '%1.2f'%(percentage), fontdict= font)
@@ -92,7 +106,7 @@ def create_factor_plot(group_by_df, save_file_name):
 	
 	plt.savefig(report_name+save_file_name+'.png', dpi=200, facecolor='w', edgecolor='w',
         orientation='portrait', papertype=None, format=None,
-        transparent=False, bbox_inches=None, pad_inches=1.0,
+        transparent=False, bbox_inches=None, pad_inches=0.0,
         frameon=None)
 	print('Graph output stored to: {0}'.format(report_name+save_file_name+'.png'))
 	

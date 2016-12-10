@@ -57,30 +57,37 @@ def main():
 	
 	save_file_name = save_file_name+dt.datetime.strftime(dt.datetime.now(),'%Y_%m_%d_%H_%M_%S')
 	
-	reshaped.to_csv(report_name+save_file_name+'.csv', sep=',', encoding='utf-8', index=False)
+	reshaped.to_csv(report_name+save_file_name+'.csv', sep=',', encoding='utf-8')
 	print('CSV output saved to: {0}'.format(report_name+save_file_name+'.csv'))
 	create_cost_heatmap(reshaped, save_file_name)
 	print('End')
 	
 def create_cost_heatmap(reshaped, save_file_name):
 	plt.subplots(figsize=(20,10))
+	sns.set_style('whitegrid')
 	cost_heatmap = sns.heatmap(reshaped, annot=True,
-							   annot_kws={"size": 20, "color":'#DAA520'},
-							   linewidths=.5, fmt='.2f', cmap='YlOrRd',
-							   cbar=False)
-	plt.setp(cost_heatmap.get_xticklabels(), rotation=45, fontsize=14, color='#DC143C')
-	plt.setp(cost_heatmap.get_yticklabels(), rotation=45, fontsize=14, color='#DC143C')
-	figure_title = cost_heatmap.set_title('Borough to Borough Revenue Distribution')
-	figure_title.set_position([.5, 1.08])
-	cost_heatmap.xaxis.get_label().set_fontsize(24)
-	cost_heatmap.yaxis.get_label().set_fontsize(24)
-	cost_heatmap.xaxis.get_label().set_color('#DC143C')
-	cost_heatmap.yaxis.get_label().set_color('#DC143C')
+							   annot_kws={"size": 20, "color":'#DAA520' , 'weight':'bold'},
+							   linewidths=.5, fmt='.2f', cmap='Blues_r',
+							   cbar=True)
+
+	#XYTick
+	plt.setp(cost_heatmap.get_xticklabels(), rotation=45, fontsize=24, color='#B2912F', fontweight='bold')
+	plt.setp(cost_heatmap.get_yticklabels(), rotation=45, fontsize=24, color='#B2912F', fontweight='bold')
+
+	#title
+	figure_title = cost_heatmap.set_title('Borough to Borough Revenue Distribution', weight='bold')
+	figure_title.set_position([.5, 1.07])
 	cost_heatmap.title.set_fontsize(36)
-	cost_heatmap.title.set_color('#DC143C')
-	cost_heatmap.xaxis.tick_top()
-	cost_heatmap.tick_params(axis='x', which='major',labelsize=18)
-	cost_heatmap.tick_params(axis='y', which='major',labelsize=18)
+	cost_heatmap.title.set_color('#4D4D4D')
+
+	#XYLabels
+	cost_heatmap.xaxis.get_label().set_fontsize(30)
+	cost_heatmap.xaxis.set_label_text('Dropoff Area', weight='bold')
+	cost_heatmap.xaxis.get_label().set_color('#4D4D4D')
+
+	cost_heatmap.yaxis.get_label().set_fontsize(30)
+	cost_heatmap.yaxis.set_label_text('Pick-Up Area', weight='bold')
+	cost_heatmap.yaxis.get_label().set_color('#4D4D4D')
 	
 	#store the output in csv
 	report_name = 'reports\\png\\'
