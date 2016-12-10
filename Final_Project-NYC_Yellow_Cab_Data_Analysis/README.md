@@ -43,6 +43,7 @@ Every analysis file has same optional arguments.
 
 ### Analysis 1- Borough to Borough Revenue Distribution
 * The analysis displays the revenue matrix between all the boroughs in New York.
+
 **Pick-Up**|**Bronx**|**Brooklyn**|**Manhattan**|**Queens**|**Staten Island**
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:
 Bronx|4328.69|197.78|2930.96|656.54|0.0
@@ -52,10 +53,12 @@ Queens|8138.49|58872.59|175640.55|69512.92|963.15
 Staten Island|0.0|46.8|0.0|0.0|11.8
 
 The Cost Heatmap is as below:
-![](Analysis/Analysis1/reports/png/All_All_2016_12_10_14_32_08.png?token=AJjBAvueiasEFrC3NGDEI5-qvNdAHPitks5YVZv-wA%3D%3D)
+
+![](Analysis/Analysis1/reports/png/All_All_2016_12_10_16_10_54.png?token=AJjBAvueiasEFrC3NGDEI5-qvNdAHPitks5YVZv-wA%3D%3D)
 
 ### Analysis 2- Average Credit Vs. Cash Payments Per Borough.
 * The analysis displays average Credit Vs. Cash payments Per borough where the trip ended and payment was made.
+
 **Pick-Up Area**|**Payment Type**|**Average**
 :-----:|:-----:|:-----:
 Bronx|Credit|23.69
@@ -71,10 +74,11 @@ Staten Island|Cash|11.8
 
 The Grouped bar chart is as below:
 
-![](Analysis/Analysis2/reports/png/All_All_2016_12_10_14_49_24.png?token=AJjBAjHEzhY84l8Jbrv2wKgVJRAvVRTUks5YVZzQwA%3D%3D)
+![](Analysis/Analysis2/reports/png/All_All_2016_12_10_16_11_25.png?token=AJjBAjHEzhY84l8Jbrv2wKgVJRAvVRTUks5YVZzQwA%3D%3D)
 
 ### Analysis 3- Avarage Tip Percentage
 * This analysis tells us the avarage tip percentage per borough and also displays min and max payment.
+
 **Dropoff Area**|**Average Tip**|**Max Tip**|**Min Tip**
 :-----:|:-----:|:-----:|:-----:
 Bronx|13.52|59.92|0.0
@@ -84,7 +88,7 @@ Queens|17.96|88.71|0.0
 Staten Island|17.17|29.97|0.0
 
 The Bar plot is as below:
-![](Analysis/Analysis3/reports/png/All_All_2016_12_10_14_49_53.png?token=AJjBAotkT7Ez9mXpOc2wYDJ8v6dGs06_ks5YVZz4wA%3D%3D)
+![](Analysis/Analysis3/reports/png/All_All_2016_12_10_16_11_46.png?token=AJjBAotkT7Ez9mXpOc2wYDJ8v6dGs06_ks5YVZz4wA%3D%3D)
 
 ### Analysis 4- Cash Vs. Credit Payment Distribution For Trips Under $150
 * The analysis displays Cash Vs Credit Payment distribution per borough in violin chart. Only trips under $150 are considered for this analysis.
@@ -103,7 +107,7 @@ Staten Island|Cash|67.4
 Staten Island|Credit|84.37
 
 The violin plot is as below:
-![](Analysis/Analysis4/reports/png/All_All_2016_12_10_14_53_02.png?token=AJjBAl1R6SDueVSYMBoTRCQRgrlWxUWHks5YVZ0qwA%3D%3D)
+![](Analysis/Analysis4/reports/png/All_All_2016_12_10_16_12_04.png?token=AJjBAl1R6SDueVSYMBoTRCQRgrlWxUWHks5YVZ0qwA%3D%3D)
 
 ### Analysis 5- Comparison of Lyft Vs Yellow Cab Ride Costs based on Passenger count
 * This analysis compares the NYC Yellow cab with Lyft ride estimated costs. The lyft data is collected through Lyft REST API.
@@ -123,7 +127,7 @@ The violin plot is as below:
 6|13.27|13.91
 
 The Bidirectional Bar plots is as below:
-![](Analysis/Analysis5/reports/png/All_All_2016_12_10_14_55_59_bidirectional.png?token=AJjBAntMGVvZLQbbXTd0eSySIS7TvD-mks5YVZ1dwA%3D%3D)
+![](Analysis/Analysis5/reports/png/All_All_2016_12_10_16_10_23_bidirectional.png?token=AJjBAntMGVvZLQbbXTd0eSySIS7TvD-mks5YVZ1dwA%3D%3D)
 
 The Grouped Bar chart is as below:
-![](Analysis/Analysis5/reports/png/All_All_2016_12_10_14_55_59_bar_plot.png?token=AJjBAmThvCuXNpa-McilCPe39qbnavDOks5YVZ2FwA%3D%3D)
+![](Analysis/Analysis5/reports/png/All_All_2016_12_10_16_10_23_bar_plot.png?token=AJjBAmThvCuXNpa-McilCPe39qbnavDOks5YVZ2FwA%3D%3D)
