@@ -25,6 +25,8 @@ Few important points about dataset.
 
 * There are few records without location info.
 * In some cases, the tip amount is way to higher than usual scenario (e.g fare amount $9.5, tip amount $998.0)
+* Tip amount is present only for credit card payments.
+
 I have ignored such cases.
 
 ### Pre-Processing
