@@ -31,11 +31,12 @@ I have ignored such cases.
 
 ### Pre-Processing
 The aim is to process the downloaded data in Taxi folder and getting it ready for analysis.
-Steps:
-  1. Data extraction from Taxi folder and adding Travel date parameter in the file.
-  2. Creating chunks of the extracted data in order to deal with small csv rather than a big one.
-  3. Read the GeoJSON and updating the Pick Up and Dropoff areas
-  4. Request and store Lyft ride estimates using requests library.
+
+#### Steps:
+  * Data extraction from Taxi folder and adding Travel date parameter in the file.
+  * Creating chunks of the extracted data in order to deal with small csv rather than a big one.
+  * Read the GeoJSON and updating the Pick Up and Dropoff areas
+  * Request and store Lyft ride estimates using requests library.
 
 Please run the DataCollection.py file.
   Optional Arguments: 
