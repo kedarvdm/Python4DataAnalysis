@@ -65,6 +65,8 @@ def main():
 
 	grouped_df = pd.merge(grouped_df, group_by_max_df,how='inner', right_index=False, left_index=False)
 	grouped_df = pd.merge(grouped_df, group_by_min_df,how='inner', right_index=False, left_index=False)
+	
+	grouped_df = grouped_df.round(2)
 
 	#store the output in csv
 	report_name = 'reports\\csv\\'

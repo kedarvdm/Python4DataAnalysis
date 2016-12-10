@@ -65,6 +65,9 @@ def main():
 
 	grouped_df = grouped_df.reset_index()
 	
+	grouped_df = grouped_df.round(2)
+	grouped_df
+	
 	#store the output in csv
 	report_name = 'reports\\csv\\'
 	

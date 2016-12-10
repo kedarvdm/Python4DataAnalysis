@@ -39,6 +39,8 @@ def main():
 	group_by_df['payment_type'] = group_by_df['payment_type'].apply(lambda x: 'Credit' if x == 1 else 'Cash')
 	group_by_df = group_by_df.rename(columns = {'pickup_area':'Pick-Up Area', 'payment_type':'Payment Type', 'total_amount':'Average'})
 	
+	group_by_df = group_by_df.round(2)
+	
 	#store the output in csv
 	report_name = 'reports\\csv\\'
 	
