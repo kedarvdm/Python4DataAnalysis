@@ -1,6 +1,4 @@
-# Project Title
-
-Data Analysis of NYC Yellow Cab
+# Data Analysis of NYC Yellow Cab
 
 ### Prerequisites
 
