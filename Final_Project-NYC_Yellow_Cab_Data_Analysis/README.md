@@ -22,7 +22,7 @@ http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml
 Few important points about dataset.
 
 * There are few records without location info.
-* In some cases, the tip amount is way to higher than usual scenario (e.g fare amount $9.5, tip amount $998.0)
+* In some cases, the tip amount is way too higher than usual scenario (e.g fare amount $9.5, tip amount $998.0)
 * Tip amount is present only for credit card payments.
 
 I have ignored such cases.
@@ -37,7 +37,7 @@ The aim is to process the downloaded data in Taxi folder and getting it ready fo
   * Request and store Lyft ride estimates using requests library.
 
 Please run the DataCollection.py file.
-  Optional Arguments: 
+  Optional Arguments:
   1. \-\-venderid (1= Creative Mobile Technologies, LLC; 2= VeriFone Inc.)
   2. \-\-month (The format is YYYY-MM e.g. 2016-01)
 ```
@@ -62,8 +62,10 @@ Sum|222411.0|485329.9|1926663.28|44596.02|74851.0|218746.62|38877.73|45227.4|234
 ## Analysis
 The py files for performing analysis are located in Analysis folder and its subfolders.
 Every analysis file has same optional arguments.
-  Optional Arguments: 1) --venderid (So far NYC dataset has 2 venders. 1= Creative Mobile Technologies, LLC; 2= VeriFone Inc.)
-                      2) --month (The format is YYYY-MM e.g. 2016-01)
+  
+  Optional Arguments:
+  1. --venderid (So far NYC dataset has 2 venders. 1= Creative Mobile Technologies, LLC; 2= VeriFone Inc.)
+  2. --month (The format is YYYY-MM e.g. 2016-01)
 ```
     python Analysis1.py --venderid=1 --month=2016-01
 ```
