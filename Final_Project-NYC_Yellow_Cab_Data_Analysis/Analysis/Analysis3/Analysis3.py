@@ -101,19 +101,19 @@ def create_bar_plot(grouped_df, save_file_name):
 	plt.subplots(figsize=(20,10))
 	sns.set(style='whitegrid')
 	max_plot = sns.barplot(x="Dropoff Area", y="Max Tip", data=grouped_df,
-				label="Total", color="#DECF3F")
+            label="Total", color="#DECF3F")
 
 	avg_plot = sns.barplot(x="Dropoff Area", y="Average Tip", data=grouped_df,
-				label="Total", color="#FF8C00")
+				label="Total", color="#9400D3")
 
 	min_plot = sns.barplot(x="Dropoff Area", y="Min Tip", data=grouped_df,
-				label="Total", color="#DECF3F")
+				label="Total", color="#FF8C00")
 
 	#Legend
 	maxbar = plt.Rectangle((1,1),2,2,fc="#DECF3F", edgecolor = 'none')
 	avgbar = plt.Rectangle((1,1),2,2,fc='#9400D3',  edgecolor = 'none')
 	minbar = plt.Rectangle((1,1),2,2,fc='#FF8C00',  edgecolor = 'none')
-	l = plt.legend([maxbar, avgbar, minbar], ['Min', 'Average', 'Max'], loc=2, ncol = 3, prop={'size':16 , 'weight':'bold'})
+	l = plt.legend([maxbar, avgbar, minbar], ['Max', 'Average', 'Min'], loc=2, ncol = 3, prop={'size':16 , 'weight':'bold'})
 	l.draw_frame(False)
 
 	#title
